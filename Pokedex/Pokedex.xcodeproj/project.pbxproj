@@ -12,6 +12,7 @@
 		885BD9AE2288AF010044A0BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885BD9AD2288AF010044A0BD /* Assets.xcassets */; };
 		885BD9B12288AF010044A0BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885BD9AF2288AF010044A0BD /* LaunchScreen.storyboard */; };
 		885BD9BE2288D0A00044A0BD /* PokedexController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885BD9BD2288D0A00044A0BD /* PokedexController.swift */; };
+		885BD9C02288D7AB0044A0BD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885BD9BF2288D7AB0044A0BD /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		885BD9B02288AF010044A0BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		885BD9B22288AF010044A0BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		885BD9BD2288D0A00044A0BD /* PokedexController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexController.swift; sourceTree = "<group>"; };
+		885BD9BF2288D7AB0044A0BD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		885BD9B82288AF4B0044A0BD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				885BD9BF2288D7AB0044A0BD /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				885BD9BE2288D0A00044A0BD /* PokedexController.swift in Sources */,
+				885BD9C02288D7AB0044A0BD /* Extensions.swift in Sources */,
 				885BD9A72288AF000044A0BD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

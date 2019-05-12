@@ -17,9 +17,23 @@ class PokedexController: UICollectionViewController {
         
     }
     
+    //MARK: - Selectors
+    
+    @objc func showSearchBar() {
+        print("Search bar")
+    }
+    
     // MARK: - Helper functions
     
     func configureViewComponents() {
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .white
+        
+        navigationController?.navigationBar.barTintColor = .coralRed()
+        navigationController?.navigationBar.barStyle = .black
+        
+        navigationItem.title = "Pokedex"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchBar))
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
 }
