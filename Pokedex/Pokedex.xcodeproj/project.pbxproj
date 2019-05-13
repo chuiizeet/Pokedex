@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88360F022289CFD40008FCF0 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88360F012289CFD40008FCF0 /* Pokemon.swift */; };
+		88360F042289D3C60008FCF0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88360F032289D3C60008FCF0 /* Service.swift */; };
 		885BD9A72288AF000044A0BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885BD9A62288AF000044A0BD /* AppDelegate.swift */; };
 		885BD9AC2288AF000044A0BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885BD9AA2288AF000044A0BD /* Main.storyboard */; };
 		885BD9AE2288AF010044A0BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885BD9AD2288AF010044A0BD /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		88360F012289CFD40008FCF0 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		88360F032289D3C60008FCF0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		885BD9A32288AF000044A0BD /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		885BD9A62288AF000044A0BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		885BD9AB2288AF000044A0BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		885BD9B92288AF720044A0BD /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				88360F032289D3C60008FCF0 /* Service.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				885BD9BE2288D0A00044A0BD /* PokedexController.swift in Sources */,
 				885BD9C02288D7AB0044A0BD /* Extensions.swift in Sources */,
 				885BD9A72288AF000044A0BD /* AppDelegate.swift in Sources */,
+				88360F042289D3C60008FCF0 /* Service.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
