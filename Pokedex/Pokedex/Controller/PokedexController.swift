@@ -14,6 +14,8 @@ class PokedexController: UICollectionViewController {
     
     // MARK: - Properties
     
+    var pokemon = [Pokemon]()
+    
     // MARK: - Init
     
     override func viewDidLoad() {
@@ -33,7 +35,12 @@ class PokedexController: UICollectionViewController {
     // MARK: - API
     
     func fetchPokemon() {
-       Service.instance.fetchPokemon()
+        Service.instance.fetchPokemon { (pokemon) in
+            DispatchQueue.main.async {
+                self.pokemon = pokemon
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     // MARK: - Helper functions
@@ -58,7 +65,7 @@ class PokedexController: UICollectionViewController {
 extension PokedexController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return pokemon.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

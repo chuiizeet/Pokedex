@@ -13,7 +13,9 @@ class Service {
     static let instance = Service()
     let BASE_URL = "https://pokedex-bb36f.firebaseio.com/pokemon.json"
     
-    func fetchPokemon() {
+    func fetchPokemon(completion: @escaping ([Pokemon]) -> ()) {
+        
+        var pokemonArray = [Pokemon]()
         
         guard let url = URL(string: BASE_URL) else { return }
         
@@ -30,8 +32,15 @@ class Service {
             do {
                 guard let resultArray = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyObject] else { return }
                 
-                print(resultArray)
-                
+                for (key, result) in resultArray.enumerated() {
+                    if let dictionary = result as? [String: AnyObject] {
+                        let pokemon = Pokemon(id: key, dictionary: dictionary)
+                        pokemonArray.append(pokemon)
+                        
+                    }
+                    completion(pokemonArray)
+                }
+
                 
             } catch let error {
                 print("Failed to create json: ", error.localizedDescription)
