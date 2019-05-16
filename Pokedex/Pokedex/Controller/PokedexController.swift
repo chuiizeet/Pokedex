@@ -22,6 +22,12 @@ class PokedexController: UICollectionViewController {
         return view
     }()
     
+    let visualEffectView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .dark)
+        let view = UIVisualEffectView(effect: blurEffect)
+        return view
+    }()
+    
     // MARK: - Init
     
     override func viewDidLoad() {
@@ -38,6 +44,10 @@ class PokedexController: UICollectionViewController {
         print("Search bar")
     }
     
+    @objc func handleDismissal() {
+        dismissInfoView(pokemon: nil)
+    }
+    
     // MARK: - API
     
     func fetchPokemon() {
@@ -50,6 +60,16 @@ class PokedexController: UICollectionViewController {
     }
     
     // MARK: - Helper functions
+    
+    func dismissInfoView(pokemon: Pokemon?) {
+        UIView.animate(withDuration: 0.5, animations:  {
+            self.visualEffectView.alpha = 0
+            self.infoView.alpha = 0
+            self.infoView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }) { (_) in
+            self.infoView.removeFromSuperview()
+        }
+    }
     
     func configureViewComponents() {
         collectionView.backgroundColor = .white
@@ -65,10 +85,13 @@ class PokedexController: UICollectionViewController {
         
         collectionView.register(PokedexCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        view.addSubview(infoView)
-        infoView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width - 64, height: 350)
-        infoView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        infoView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -44).isActive = true
+        view.addSubview(visualEffectView)
+        visualEffectView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        visualEffectView.alpha = 0
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(handleDismissal))
+        visualEffectView.addGestureRecognizer(gesture)
+        
     }
     
 }
@@ -83,6 +106,7 @@ extension PokedexController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PokedexCell
         
         cell.pokemon = pokemon[indexPath.row]
+        cell.delegate = self
         return cell
     }
 }
@@ -97,5 +121,37 @@ extension PokedexController: UICollectionViewDelegateFlowLayout {
         let width = (view.frame.width - 36) / 3
         return CGSize(width: width, height: width)
         
+    }
+    
+}
+
+extension PokedexController: PokedexCellDelegate {
+    func presentInfoView(withPokemon pokemon: Pokemon) {
+        
+        view.addSubview(infoView)
+        infoView.delegate = self
+        infoView.pokemon = pokemon
+        infoView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width - 64, height: 350)
+        infoView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        infoView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -44).isActive = true
+        
+        // Animation
+        
+        infoView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        infoView.alpha = 0
+        
+        UIView.animate(withDuration: 0.5) {
+            self.visualEffectView.alpha = 1
+            self.infoView.alpha = 1
+            self.infoView.transform = .identity
+        }
+        
+    }
+    
+}
+
+extension PokedexController: infoViewDelegate {
+    func dismissInfoView(withPokemon pokemon: Pokemon?) {
+        dismissInfoView(pokemon: pokemon)
     }
 }

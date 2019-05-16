@@ -8,9 +8,39 @@
 
 import UIKit
 
+protocol infoViewDelegate {
+    func dismissInfoView(withPokemon pokemon: Pokemon?)
+}
+
 class InfoView: UIView {
     
     // MARK: - Properties
+    
+    var delegate: infoViewDelegate?
+    
+    var pokemon: Pokemon? {
+        didSet {
+            
+            guard let pokemon = self.pokemon else { return }
+            guard let type = pokemon.type else { return }
+            guard let defense = pokemon.defense else { return }
+            guard let attack = pokemon.attack else { return }
+            guard let id = pokemon.id else { return }
+            guard let height = pokemon.height else { return }
+            guard let weight = pokemon.weight else { return }
+            
+            
+            imageView.image = pokemon.image
+            nameLabel.text = pokemon.name
+            
+            configureLabel(label: typeLabel, title: "Type", details: type)
+            configureLabel(label: defenseLabel, title: "Defense", details: "\(defense)")
+            configureLabel(label: heightLabel, title: "Height", details: "\(height)")
+            configureLabel(label: weightLabel, title: "Weight", details: "\(weight)")
+            configureLabel(label: pokedexIdLabel, title: "Pokedex Id", details: "\(id)")
+            configureLabel(label: attackLabel, title: "Base Attack", details: "\(attack)")
+        }
+    }
     
     let imageView: UIImageView = {
         let iv = UIImageView()
@@ -37,31 +67,49 @@ class InfoView: UIView {
     
     let typeLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .coralRed()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.text = "TEST: 21"
         return label
     }()
     
     let defenseLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .coralRed()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.text = "TEST: 21"
         return label
     }()
     
     let heightLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .coralRed()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.text = "TEST: 21"
         return label
     }()
     
     let pokedexIdLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .coralRed()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.text = "TEST: 21"
         return label
     }()
     
     let attackLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .coralRed()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.text = "TEST: 21"
         return label
     }()
     
     let weightLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .coralRed()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.text = "TEST: 21"
         return label
     }()
     
@@ -91,10 +139,18 @@ class InfoView: UIView {
     // MARK: - Selectors
     
     @objc func handleViewMoreInfo() {
-        print("Handle view more info")
+        guard let pokemon = self.pokemon else { return }
+        self.delegate?.dismissInfoView(withPokemon: pokemon)
     }
     
     // MARK: - Helper functions
+    
+    func configureLabel(label: UILabel, title: String, details: String) {
+        let attributedText = NSMutableAttributedString(attributedString: NSAttributedString(string: "\(title):  ", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.coralRed()]))
+        attributedText.append(NSAttributedString(string: "\(details)", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.gray]))
+        label.attributedText = attributedText
+    }
+    
     
     func configureViewComponents() {
         
@@ -134,6 +190,5 @@ class InfoView: UIView {
         addSubview(infoButton)
         infoButton.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 12, paddingRight: 12, width: 0, height: 50)
     }
-  
     
 }
