@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88015420228BD036003CF3D1 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8801541F228BD036003CF3D1 /* InfoView.swift */; };
+		88055D8822A726D5004EF771 /* PokemonInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88055D8722A726D5004EF771 /* PokemonInfoController.swift */; };
 		88360F022289CFD40008FCF0 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88360F012289CFD40008FCF0 /* Pokemon.swift */; };
 		88360F042289D3C60008FCF0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88360F032289D3C60008FCF0 /* Service.swift */; };
 		885BD9A72288AF000044A0BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885BD9A62288AF000044A0BD /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		8801541F228BD036003CF3D1 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		88055D8722A726D5004EF771 /* PokemonInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoController.swift; sourceTree = "<group>"; };
 		88360F012289CFD40008FCF0 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		88360F032289D3C60008FCF0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		885BD9A32288AF000044A0BD /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				885BD9BD2288D0A00044A0BD /* PokedexController.swift */,
+				88055D8722A726D5004EF771 /* PokemonInfoController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				885BD9A72288AF000044A0BD /* AppDelegate.swift in Sources */,
 				88360F042289D3C60008FCF0 /* Service.swift in Sources */,
 				88015420228BD036003CF3D1 /* InfoView.swift in Sources */,
+				88055D8822A726D5004EF771 /* PokemonInfoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
