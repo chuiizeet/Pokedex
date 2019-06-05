@@ -181,9 +181,25 @@ extension PokedexController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        var pokemonEvoArray = [Pokemon]()
+        
         let poke = inSearchMode ? filteredPokemon[indexPath.row] : pokemon[indexPath.row]
         
+        if let evoChain = poke.evolutionChain {
+            
+            let evolutionChain = EvolutionChain(evolutionArray: evoChain)
+            let evoIds = evolutionChain.evolutionIds
+            
+            evoIds.forEach { (id) in
+                pokemonEvoArray.append(pokemon[id - 1])
+            }
+            
+            poke.evoArray = pokemonEvoArray
+            
+        }
+
         showPokemonInfoController(withPokemon: poke)
+        
     }
 }
 

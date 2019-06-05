@@ -8,6 +8,31 @@
 
 import UIKit
 
+struct EvolutionChain {
+    var evolutionArray: [[String: AnyObject]]?
+    var evolutionIds = [Int]()
+    
+    init(evolutionArray: [[String: AnyObject]]) {
+        self.evolutionArray = evolutionArray
+        self.evolutionIds = setEvolutionIds()
+    }
+    
+    func setEvolutionIds() -> [Int] {
+        var results = [Int]()
+        
+        evolutionArray?.forEach({ (dictionary) in
+            if let idString = dictionary["id"] as? String {
+                guard let id = Int(idString) else { return }
+                if id <= 151 {
+                    results.append(id)
+                }
+            }
+        })
+        
+        return results
+    }
+}
+
 class Pokemon {
     
     var name: String?
@@ -21,6 +46,8 @@ class Pokemon {
     var description: String?
     var type: String?
     var baseExperience: Int?
+    var evolutionChain: [[String: AnyObject]]?
+    var evoArray: [Pokemon]?
     
     init(id: Int, dictionary: [String: AnyObject]) {
         
@@ -62,8 +89,9 @@ class Pokemon {
             self.type = type
         }
         
-//        if let baseExperience = dictionary["baseExperience"] as? Int {
-//            self.baseExperience = baseExperience
-//        }
+        if let evolutionChain = dictionary["evolutionChain"] as? [[String: AnyObject]] {
+            self.evolutionChain = evolutionChain
+        }
+        
     }
 }
